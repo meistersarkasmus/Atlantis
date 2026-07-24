@@ -1,0 +1,17 @@
+# ESPHome secrets
+.secrets.yaml
+
+# VS Code
+.vscode/
+
+# Python cache
+__pycache__/
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
