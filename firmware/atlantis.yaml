@@ -210,12 +210,15 @@ light:
           lambda: |-
 
             // Vorbereitung für zukünftige Animationen
+            // Beacon idle brightness
+            // Final tuning after enclosure is finished.
+            id(beacon_level) = 0.25f;
             float beacon = id(beacon_level);
-            float approach = id(approach_level);
-
+            float approach = id(approach_level);            
+            
             // Platzhalter für den späteren Renderer
             float final_brightness = 0.0f;
-
+            
             // Bestehende Atlantis-Pulse-Logik (unverändert)
             float pulse_energy = id(touch_energy);
 
@@ -231,8 +234,8 @@ light:
 
                 float brightness = radius - distance;
 
-                if (brightness < 0.0f)
-                    brightness = 0.0f;
+                if (brightness < beacon)
+                    brightness = beacon;
 
                 if (brightness > 1.0f)
                     brightness = 1.0f;
