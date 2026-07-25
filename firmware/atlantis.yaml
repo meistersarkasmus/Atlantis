@@ -212,7 +212,11 @@ light:
             // Vorbereitung für zukünftige Animationen
             // Beacon idle brightness
             // Final tuning after enclosure is finished.
-            id(beacon_level) = 0.25f;
+            float t = millis() / 1000.0f;
+            id(beacon_level) = 
+                0.35f +
+                0.04f * sinf(t * 1.70f);
+                
             float beacon = id(beacon_level);
             float approach = id(approach_level);            
             
