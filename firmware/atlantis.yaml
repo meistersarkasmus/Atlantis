@@ -66,6 +66,20 @@ globals:
     restore_value: no
     initial_value: "false"
 
+  - id: beacon_level
+    type: float
+    restore_value: no
+    initial_value: "0.0"
+
+  - id: approach_level
+    type: float
+    restore_value: no
+    initial_value: "0.0"
+
+  - id: pulse_level
+    type: float
+    restore_value: no
+    initial_value: "0.0"
 #################################################
 # TOUCH
 #################################################
@@ -195,6 +209,14 @@ light:
 
           lambda: |-
 
+            // Vorbereitung für zukünftige Animationen
+            float beacon = id(beacon_level);
+            float approach = id(approach_level);
+
+            // Platzhalter für den späteren Renderer
+            float final_brightness = 0.0f;
+
+            // Bestehende Atlantis-Pulse-Logik (unverändert)
             float pulse_energy = id(touch_energy);
 
             // Midpoint between LEDs 2 and 3
@@ -215,7 +237,7 @@ light:
                 if (brightness > 1.0f)
                     brightness = 1.0f;
 
-            uint8_t b = uint8_t(brightness * 255);
+                uint8_t b = uint8_t(brightness * 255);
 
-            it[i] = Color(0, b, b);
+                it[i] = Color(0, b, b);
             }
